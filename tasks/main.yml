@@ -1,0 +1,10 @@
+---
+# tasks file for winpcap
+
+- name: Set dir_info,pkg_info fact in {{ ansible_distribution }} by {{ winpcap_install_type }} install
+  set_fact:
+    dir_info: "{{ winpcap_dirs[ansible_os_family] }}"
+    pkg_info: "{{ winpcap_packages[winpcap_version][ansible_os_family] }}"
+
+- name: Include Windows-{{ winpcap_install_type }}.yml in {{ ansible_distribution }} by {{ winpcap_install_type }} install
+  include: Window-{{ winpcap_install_type }}.yml
